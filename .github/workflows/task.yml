@@ -23,6 +23,12 @@ jobs:
       - name: Run
         run: |
           python ./Main.py "${{ secrets.username }}" "${{ secrets.password }}" problemsetQuestionsDynamicInfos
-      - name: ls
+      - name: update github
         run: |
-          ls
+          git diff
+          git config --global user.email "yanzeyu2019@gmail.com"
+          git config --global user.name "Gabriel"
+          git add README.md
+          git commit -m "Github Action Auto Updated"
+          git push
+      
