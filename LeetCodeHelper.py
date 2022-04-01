@@ -81,8 +81,17 @@ class LeetCodeHelper:
             return
         print(f'{today} 请求成功')
 
+        if query == 'problemsetQuestionsDynamicInfos':
+            for element in message['data']['problemsetQuestionsDynamicInfos']:
+                del element['solutionNum']
+                del element['isFavor']
+                del element['acRate']
+                del element['status']
+                del element['__typename']
+
         with open(query, 'w') as file:
-            json.dump(message, file)
+            print(message['data'])
+            json.dump(message['data'], file)
         print(f'{today} 响应已保存')
         return True
 
